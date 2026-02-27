@@ -41,7 +41,7 @@ class User(AbstractUser):
     objects = UserManager()
 
     def __str__(self):
-        return f"{self.email} ({self.role})"
+        return f"{self.full_name} ({self.role})"
 
 
 class Patient(models.Model):
@@ -70,7 +70,7 @@ class Patient(models.Model):
 
 
     def __str__(self):
-        return f"Patient Profile: {self.user.email}"
+        return f"PAT-{self.user.id} {self.user.full_name}"
 
 
 class Radiologist(models.Model):
@@ -79,4 +79,4 @@ class Radiologist(models.Model):
     hospital = models.CharField(max_length=300, blank=True)
 
     def __str__(self):
-        return f"Radiologist Profile: {self.user.email}"
+        return f"RAD-{self.user.id} {self.user.full_name}"
